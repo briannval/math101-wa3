@@ -71,6 +71,7 @@ def main():
     
     print(res_list)
     print(bytes(res_list).decode('utf-8'))
+    print("R: " + str(len(res_list)-1))
     
     
 main()
