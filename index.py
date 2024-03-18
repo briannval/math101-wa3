@@ -60,7 +60,6 @@ def main():
     csv_values = get_csv_values()
     
     res_list = []
-    is_before_r = True
     b_value = 1
     
     while True:
