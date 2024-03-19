@@ -20,18 +20,18 @@ def get_csv_values():
 (2) Converting i values to sin(ai/n), where a ranges from [0, n]
     and n is the length of all f values
 """
-def get_sin_x_values(n, b):
+def get_sin_x_values(n, k):
     i_values = [i for i in range(n)]
     # 0, 1, 2, 3, 4 ... n
     
-    pi_multiplier = (b * PI)/(n-1)
-    # π/n
+    pi_multiplier = (k * PI)/(n-1)
+    # kπ/n
     
     pi_i_values = list(map(lambda i_value: i_value * pi_multiplier, i_values))
-    # 0, π/n, 2π/n, 3π/n, ... nπ/n
+    # 0, π/(n-1), 2π/(n-1), 3π/(n-1), ... (n-1)π/(n-1)
     
     res_values = list(map(lambda pi_i_value: math.sin(pi_i_value), pi_i_values))
-    # sin(0), sin(π/n), sin(2π/n) ... sin(nπ/n)
+    # sin(0), sin(π/(n-1)), sin(2π/(n-1)) ... sin((n-1)π/(n-1))
     
     assert n == len(res_values)
     
@@ -48,11 +48,11 @@ def cross_fn(sin_i_values, f_values):
 (4) Trapezoid numerical approximation method
 """
 def trap_fn(values):
-    interval = PI/(len(values) - 1)
+    delta_x = PI/(len(values) - 1)
  
     total = sum(values[1:-1]) + (values[0]/2) + (values[-1]/2)
     
-    return interval * total
+    return delta_x * total
     # standard formula for trapezoidal method
 
 """
