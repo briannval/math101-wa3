@@ -75,30 +75,34 @@ Iterative process for parsing test data in No. 3, and actual data in No. 4
 """    
 def main():
     csv_values = get_csv_values()
-    
+
+    # Testing with No. 3
     test_list = []
     test_b_value = 1
     
     while True:
         res = get_b(TEST_VALUES, test_b_value)
-        if res <= 0:
+        rounded_res = round(res)
+        if rounded_res <= 0:
             break
         test_b_value += 1
-        test_list.append(round(res))
+        test_list.append(rounded_res)
         
     print(test_list)
     print(bytes(test_list).decode('utf-8'))
     print("R: " + str(len(test_list)))
-    
+
+    # Applying with No. 4
     res_list = []
     b_value = 1
     
     while True:
         res = get_b(csv_values, b_value)
-        if res <= 0:
+        rounded_res = round(res)
+        if rounded_res <= 0:
             break
         b_value += 1
-        res_list.append(round(res))
+        res_list.append(rounded_res)
     
     print(res_list)
     print(bytes(res_list).decode('utf-8'))
