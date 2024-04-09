@@ -3,45 +3,45 @@
 A description for the methods used are given below:
 
 \begin{enumerate}
-\item The first function obtains all the values in the csv file provided. 
-The values are added to an array which will be the list of numbers $f_i$, $i=0,\ldots,N$, which will be part of our trapezoidal sum approximation. 
-In our case, we have $129$ values, so the value of $N$ is $128$.
-\item The second function creates consistent iterations of length $n$ of variables $i$ to multiply with $\frac{k\pi}{N}$. 
-Since $n$ defines the number of $f$ values, due to $i$ starting at $0$, we can define $N$ to be $n-1$, where $n$ is the parameter in our function. 
-The variable k here is consistent with formula $(3)$ defining $B_k(f)$. 
-We have seen in question $3$, that multiplying every term of $f_i$ with $\sin(kx)$ gives us the value of $b_k$ after all the other steps are completed, 
-as all other terms $x_i$ where $i \neq k$ evaluates to $0$, as defined in the stated equation 2(b). 
-In other words, this process transforms $i$ to $x_i$, and finally to $\sin(x_i)$.
-\newline
-As a more descriptive example, setting $n$ to $9$ and $b$ to $1$ transforms an array of $9$ integers
-\vspace{0.05cm}
-\newline
-from $[0, 1, 2, ..., 8]$ to $[0, \frac{\pi}{8}, \frac{2\pi}{8}, ..., \frac{8\pi}{8}]$, 
-and finally to $\bigg[\sin(0), \sin\bigg(\frac{k\pi}{8}\bigg), ..., 
-\sin\bigg(\frac{8k\pi}{8}\bigg)\bigg]$ or $\bigg[\sin(k \cdot x_0), 
-\sin(k \cdot x_1), ..., \sin(k \cdot x_N)\bigg]$, as stated in the question above.
-\item The third function does the actual cross multiplication between $f_i$ and $\sin(x_i)$. 
-Since we have obtained $f_0, f_1, f_2, ..., f_N$ in the first function, and $\sin(k \cdot x_0), 
-\sin(k \cdot x_1), \sin(k \cdot x_2), ..., \sin(k \cdot x_N)$ in the second, 
-we apply this function to obtain $f_0 \cdot \sin(k \cdot x_0), f_1 \cdot \sin(k \cdot x_1), 
-f_2 \cdot \sin(k \cdot x_2), ..., f_N \cdot \sin(k \cdot x_N)$, which is perfectly the trapezoidal formula for the intergral in $(3)$.
-\item The fourth function is applying the trapezoidal approximation formula. 
-We first define the interval, or more commonly known as $\Delta x$, which is $\frac{b-a}{N}$, where $b = \pi$, $a = 0$, and $N$ is as we defined above.
-\newline As a result, we get the formula $\Delta x \bigg(\frac{1}{2} \cdot f_0 \cdot \sin(k \cdot x_0) + f_1 \cdot \sin(k \cdot x_1) + f_2 \cdot \sin(k \cdot x_2) + ... + f_{N-1} \cdot \sin(k \cdot x_{N-1}) + \frac{1}{2} \cdot f_N \cdot \sin(k \cdot x_N)\bigg)$.
-\item The fifth function fully completes the formula for $B_k(f)$ by multiplying the integral approximation obtained in the fourth function by $\frac{1}{R}$, where $R = \frac{\pi}{2}$, as discovered in $2(b)$.
-\vspace{0.1cm}
-\newline
-The result of this evaluation is a particular value $b_k$, where we have specified $k$ in function 2.
-\item The last function is a nested combination of the first to fifth function. 
-We know how to set up a formula for $B_k(f)$, which gives us $b_k$, 
-by passing in $f_i$ values and specifying $k$. 
-From this, we can find a particular $b_k$ value with only passing in the list of values to be decoded, and a particular $k$.
+  \item The first function obtains all the values in the csv file provided.
+        The values are added to an array which will be the list of numbers $f_i$, $i=0,\ldots,N$, which will be part of our trapezoidal sum approximation.
+        In our case, we have $129$ values, so the value of $N$ is $128$.
+  \item The second function creates consistent iterations of length $n$ of variables $i$ to multiply with $\frac{k\pi}{N}$.
+        Since $n$ defines the number of $f$ values, due to $i$ starting at $0$, we can define $N$ to be $n-1$, where $n$ is the parameter in our function.
+        The variable k here is consistent with formula $(3)$ defining $B_k(f)$.
+        We have seen in question $3$, that multiplying every term of $f_i$ with $\sin(kx)$ gives us the value of $b_k$ after all the other steps are completed,
+        as all other terms $x_i$ where $i \neq k$ evaluates to $0$, as defined in the stated equation 2(b).
+        In other words, this process transforms $i$ to $x_i$, and finally to $\sin(x_i)$.
+        \newline
+        As a more descriptive example, setting $n$ to $9$ and $b$ to $1$ transforms an array of $9$ integers
+        \vspace{0.05cm}
+        \newline
+        from $[0, 1, 2, ..., 8]$ to $[0, \frac{\pi}{8}, \frac{2\pi}{8}, ..., \frac{8\pi}{8}]$,
+        and finally to $\bigg[\sin(0), \sin\bigg(\frac{k\pi}{8}\bigg), ...,
+            \sin\bigg(\frac{8k\pi}{8}\bigg)\bigg]$ or $\bigg[\sin(k \cdot x_0),
+            \sin(k \cdot x_1), ..., \sin(k \cdot x_N)\bigg]$, as stated in the question above.
+  \item The third function does the actual cross multiplication between $f_i$ and $\sin(x_i)$.
+        Since we have obtained $f_0, f_1, f_2, ..., f_N$ in the first function, and $\sin(k \cdot x_0),
+          \sin(k \cdot x_1), \sin(k \cdot x_2), ..., \sin(k \cdot x_N)$ in the second,
+        we apply this function to obtain $f_0 \cdot \sin(k \cdot x_0), f_1 \cdot \sin(k \cdot x_1),
+          f_2 \cdot \sin(k \cdot x_2), ..., f_N \cdot \sin(k \cdot x_N)$, which is perfectly the trapezoidal formula for the intergral in $(3)$.
+  \item The fourth function is applying the trapezoidal approximation formula.
+        We first define the interval, or more commonly known as $\Delta x$, which is $\frac{b-a}{N}$, where $b = \pi$, $a = 0$, and $N$ is as we defined above.
+        \newline As a result, we get the formula $\Delta x \bigg(\frac{1}{2} \cdot f_0 \cdot \sin(k \cdot x_0) + f_1 \cdot \sin(k \cdot x_1) + f_2 \cdot \sin(k \cdot x_2) + ... + f_{N-1} \cdot \sin(k \cdot x_{N-1}) + \frac{1}{2} \cdot f_N \cdot \sin(k \cdot x_N)\bigg)$.
+  \item The fifth function fully completes the formula for $B_k(f)$ by multiplying the integral approximation obtained in the fourth function by $\frac{1}{R}$, where $R = \frac{\pi}{2}$, as discovered in $2(b)$.
+        \vspace{0.1cm}
+        \newline
+        The result of this evaluation is a particular value $b_k$, where we have specified $k$ in function 2.
+  \item The last function is a nested combination of the first to fifth function.
+        We know how to set up a formula for $B_k(f)$, which gives us $b_k$,
+        by passing in $f_i$ values and specifying $k$.
+        From this, we can find a particular $b_k$ value with only passing in the list of values to be decoded, and a particular $k$.
 \end{enumerate}
 
-We perform the last function continuously over the csv values, incrementing the value of $k$ at each step, 
-effectively evaluating for $b_1, b_2, ... , b_R$. 
-Furthermore, we stop at $b_R$, when we reach a rounded value of $0$. 
-Hence, we have effectively found the value of $R$, which is $95$, as listed above. 
+We perform the last function continuously over the csv values, incrementing the value of $k$ at each step,
+effectively evaluating for $b_1, b_2, ... , b_R$.
+Furthermore, we stop at $b_R$, when we reach a rounded value of $0$.
+Hence, we have effectively found the value of $R$, which is $95$, as listed above.
 Lastly, a simple conversion to from text to UTF-8 gives us a thought-invoking quote by Albert Einstein below.
 
 \end{document}
